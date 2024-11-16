@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+import { UserButton } from '@clerk/nextjs'
+import teslaImage from '../../public/teslaIcon.webp'
 
 export default function Component() {
   const [messages, setMessages] = useState([
@@ -36,11 +38,13 @@ export default function Component() {
         {/* Header */}
         <div className="flex items-center justify-between mb-4 bg-gray-900/80 backdrop-blur-sm p-4 rounded-t-lg border border-gray-700">
           <div className="flex items-center gap-3">
-            <Avatar className="h-10 w-10">
-              <AvatarImage src="/placeholder.svg?height=40&width=40" alt="Nikola Tesla" />
-              <AvatarFallback>NT</AvatarFallback>
-            </Avatar>
+
+                  <Avatar className="h-10 w-10">
+                    <AvatarImage src={teslaImage.src} alt="Nikola Tesla" />
+                    <AvatarFallback>NT</AvatarFallback>
+                  </Avatar>
             <h1 className="text-2xl font-bold text-white">Chat with Nikola Tesla</h1>
+            <UserButton />
           </div>
           <Zap className="w-6 h-6 text-yellow-400 animate-pulse" />
         </div>
@@ -51,7 +55,7 @@ export default function Component() {
             <div key={index} className={`mb-4 flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               {message.role === 'assistant' && (
                 <Avatar className="h-8 w-8 mr-2 mt-1">
-                  <AvatarImage src="/placeholder.svg?height=32&width=32" alt="Nikola Tesla" />
+                  <AvatarImage src={teslaImage.src} alt="Nikola Tesla" />
                   <AvatarFallback>NT</AvatarFallback>
                 </Avatar>
               )}
