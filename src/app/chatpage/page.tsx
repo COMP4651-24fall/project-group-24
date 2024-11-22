@@ -81,7 +81,7 @@ export default function StartPage() {
       <div className="absolute inset-0 bg-black/40 z-0"></div>
 
       {/* Chat container */}
-      <div className="flex-1 flex flex-col max-w-3xl mx-auto w-full p-4 relative z-10">
+      <div className="flex-1 flex flex-col max-w-3xl mx-auto w-full p-4 relative z-10 h-full overflow-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-4 bg-gray-900/80 backdrop-blur-sm p-4 rounded-t-lg border border-gray-700">
           <div className="flex items-center gap-3">
@@ -91,7 +91,10 @@ export default function StartPage() {
             </Avatar>
             <h1 className="text-2xl font-bold text-white">Chat with Nikola Tesla</h1>
           </div>
-          <Zap className="w-6 h-6 text-yellow-400 animate-pulse" />
+          <div className="flex items-center gap-3">
+            <Zap className="w-6 h-6 text-yellow-400 animate-pulse" />
+            <UserButton />
+          </div>
         </div>
 
         {/* Messages */}
@@ -139,7 +142,6 @@ export default function StartPage() {
           >
             {isLoading ? 'Sending...' : <Send className="w-4 h-4" />}
           </Button>
-          <UserButton />
         </form>
       </div>
     </div>
