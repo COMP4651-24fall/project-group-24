@@ -8,11 +8,8 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Accept environment variables as build arguments
-ARG NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
-
 # Set the environment variable for Next.js at build time
-ENV NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=$NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+ENV NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_aW1tb3J0YWwtaGFnZmlzaC05Mi5jbGVyay5hY2NvdW50cy5kZXYk
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* .env ./
