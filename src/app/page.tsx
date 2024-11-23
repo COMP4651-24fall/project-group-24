@@ -15,6 +15,7 @@ export default function StartPage() {
   useEffect(() => {
     if (isLoaded && isSignedIn) { // Ensure authentication state is loaded
       router.push('/chatpage');
+      console.log('User is signed in');
     }
   }, [isLoaded, isSignedIn, router]);
 
