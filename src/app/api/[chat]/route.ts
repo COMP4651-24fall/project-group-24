@@ -19,7 +19,6 @@ export async function POST(req: Request) {
 
   try {
     const apiURL = `${AZURE_ENDPOINT}openai/deployments/${AZURE_DEPLOYMENT_NAME}/chat/completions?api-version=2024-06-01`;
-    console.log('Azure OpenAI API URL:', apiURL);
 
     const response = await axios.post(
       apiURL,
