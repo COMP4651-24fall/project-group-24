@@ -8,11 +8,8 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Set the environment variable for Next.js at build time
-ENV NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_aW1tb3J0YWwtaGFnZmlzaC05Mi5jbGVyay5hY2NvdW50cy5kZXYk
-
 # Install dependencies based on the preferred package manager
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* .env ./
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f package-lock.json ]; then npm ci; \
@@ -31,6 +28,11 @@ COPY . .
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED=1
+
+# Set the environment variable for Next.js at build time
+# ENV NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_aW1tb3J0YWwtaGFnZmlzaC05Mi5jbGVyay5hY2NvdW50cy5kZXYk
+
+COPY .env .env
 
 RUN \
   if [ -f yarn.lock ]; then yarn run build; \
